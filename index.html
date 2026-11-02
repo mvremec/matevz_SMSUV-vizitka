@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>doc. dr. Matevž Vremec | Podzemna voda in umetna inteligenca</title>
+<meta name="description" content="Svetovanje pri modeliranju podzemne vode ter izobraževanja in delavnice o umetni inteligenci za podjetja, šole in raziskovalce. doc. dr. Matevž Vremec, Maribor.">
+<meta name="theme-color" content="#FAFCFD">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231D5A87'/%3E%3Cpath d='M4 19c4-6 7-6 10-2s6 4 9-1 5-3 5-3' fill='none' stroke='%23fff' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<!--
+  Pred objavo zamenjajte vse oznake v oglatih oklepajih (iskanje in zamenjava):
+  [vpiši e-pošto]        e-poštni naslov (pojavi se trikrat)
+  [vpiši LinkedIn URL]   polni naslov profila, npr. https://www.linkedin.com/in/...
+  [vpiši ...] v nogi     podatki s.p.
+-->
+<style>
+  :root {
+    --paper: #FAFCFD;
+    --ink: #12304A;
+    --muted: #4D6478;
+    --accent: #1D5A87;
+    --accent-dark: #164769;
+    --rule: #D6E4EF;
+    --tint: #EBF2F8;
+    --water: #4F8DBE;
+    --font: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+  a:hover { color: var(--accent-dark); }
+  :focus-visible { outline: 3px solid var(--water); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap {
+    max-width: 66rem;
+    margin: 0 auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  /* Glava */
+  .top { padding-top: 3.5rem; padding-bottom: 2.25rem; }
+  h1 {
+    font-size: clamp(2.1rem, 7vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.25rem;
+  }
+  .lead {
+    font-size: clamp(1.2rem, 3.4vw, 1.45rem);
+    line-height: 1.45;
+    max-width: 34rem;
+    margin: 0 0 1rem;
+  }
+  .place { color: var(--muted); margin: 0; }
+
+  /* Hidrogram: ponazoritev nihanja gladine podzemne vode */
+  .water { display: block; width: 100%; height: 4.5rem; }
+  .water .fill { fill: var(--tint); }
+  .water .line {
+    fill: none;
+    stroke: var(--water);
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  /* Razdelki */
+  .section { padding: 3rem 0; border-top: 1px solid var(--rule); }
+  .section:first-child { border-top: 0; }
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--accent);
+    margin: 0 0 1.5rem;
+  }
+  h3 {
+    font-size: 1.1875rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0 0 0.5rem;
+  }
+  p { margin: 0 0 1rem; }
+  .prose { max-width: 38rem; }
+  .prose p:last-child { margin-bottom: 0; }
+
+  /* Storitve */
+  .cards { display: grid; gap: 1.25rem; }
+  .card {
+    background: var(--tint);
+    border-radius: 6px;
+    padding: 1.5rem 1.5rem 1.75rem;
+    font-size: 1rem;
+  }
+  .card h3 { margin-bottom: 0.75rem; }
+  .card ul { margin: 0 0 1.25rem; padding-left: 1.15rem; }
+  .card li { margin-bottom: 0.4rem; }
+  .card li::marker { color: var(--water); }
+  .card .for { color: var(--muted); margin: 0; font-size: 0.9375rem; }
+
+  /* Novice */
+  .news { list-style: none; margin: 0; padding: 0; max-width: 38rem; }
+  .news li { padding-bottom: 1.75rem; }
+  .news li + li { border-top: 1px solid var(--rule); padding-top: 1.75rem; }
+  .news li:last-child { padding-bottom: 0; }
+  .news time {
+    display: block;
+    color: var(--muted);
+    font-size: 0.9375rem;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 0.25rem;
+  }
+  .news p { margin: 0; }
+
+  /* Kontakt */
+  .contact dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1.5rem;
+    margin: 0 0 2rem;
+  }
+  .contact dt { color: var(--muted); }
+  .contact dd { margin: 0; overflow-wrap: anywhere; }
+  .btn {
+    display: block;
+    text-align: center;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.0625rem;
+    padding: 0.85rem 1.75rem;
+    border-radius: 4px;
+  }
+  .btn:hover { background: var(--accent-dark); color: #fff; }
+
+  /* Noga */
+  .foot {
+    border-top: 1px solid var(--rule);
+    padding: 2rem 0 3rem;
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+  .foot p { margin: 0 0 0.25rem; }
+
+  @media (min-width: 30rem) {
+    .btn { display: inline-block; }
+  }
+
+  @media (min-width: 46rem) {
+    body { font-size: 1.125rem; }
+    .wrap { padding-left: 2.5rem; padding-right: 2.5rem; }
+    .top { padding-top: 5rem; padding-bottom: 3rem; }
+    .water { height: 6rem; }
+    .section { padding: 4rem 0; }
+    .cards { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (min-width: 58rem) {
+    .section {
+      display: grid;
+      grid-template-columns: 11rem 1fr;
+      gap: 2.5rem;
+    }
+    h2 { margin: 0; padding-top: 0.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap top">
+  <h1>doc. dr. Matevž Vremec</h1>
+  <p class="lead">Svetujem pri modeliranju podzemne vode in vodim izobraževanja o umetni inteligenci za podjetja, šole in raziskovalce.</p>
+  <p class="place">Maribor, Slovenija</p>
+</header>
+
+<svg class="water" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+  <path class="fill" d="M0.0 57.4 L4.6 58.7 L9.1 60.9 L13.7 63.5 L18.3 66.3 L22.8 69.1 L27.4 72.0 L32.0 74.7 L36.5 77.4 L41.1 79.9 L45.7 82.2 L50.2 84.4 L54.8 86.5 L59.4 88.8 L63.9 90.5 L68.5 92.1 L73.1 93.6 L77.6 95.0 L82.2 96.3 L86.8 97.5 L91.3 98.6 L95.9 99.6 L100.5 100.6 L105.0 101.5 L109.6 102.3 L114.2 103.3 L118.7 104.0 L123.3 103.5 L127.9 103.1 L132.4 103.1 L137.0 103.4 L141.6 103.4 L146.1 102.4 L150.7 102.2 L155.3 99.5 L159.8 94.1 L164.4 86.7 L168.9 81.1 L173.5 75.0 L178.1 72.3 L182.6 71.8 L187.2 72.5 L191.8 74.0 L196.3 75.8 L200.9 78.0 L205.5 70.8 L210.0 64.9 L214.6 62.6 L219.2 62.6 L223.7 64.3 L228.3 65.6 L232.9 65.8 L237.4 67.2 L242.0 69.1 L246.6 71.4 L251.1 71.8 L255.7 70.8 L260.3 69.6 L264.8 68.2 L269.4 67.2 L274.0 67.1 L278.5 68.6 L283.1 70.5 L287.7 72.7 L292.2 75.0 L296.8 77.4 L301.4 79.8 L305.9 80.3 L310.5 81.5 L315.1 83.0 L319.6 84.7 L324.2 86.4 L328.8 88.1 L333.3 82.8 L337.9 80.2 L342.5 79.4 L347.0 79.8 L351.6 79.4 L356.2 79.1 L360.7 79.7 L365.3 80.9 L369.9 82.4 L374.4 83.9 L379.0 85.5 L383.6 87.2 L388.1 88.9 L392.7 90.9 L397.3 92.4 L401.8 90.3 L406.4 88.5 L411.0 88.0 L415.5 88.4 L420.1 89.2 L424.7 90.3 L429.2 91.6 L433.8 92.9 L438.4 94.1 L442.9 95.4 L447.5 96.9 L452.1 98.1 L456.6 99.2 L461.2 100.2 L465.8 98.9 L470.3 97.9 L474.9 97.7 L479.5 97.9 L484.0 96.7 L488.6 96.3 L493.2 96.5 L497.7 97.1 L502.3 97.8 L506.8 98.3 L511.4 99.0 L516.0 99.8 L520.5 93.3 L525.1 88.1 L529.7 79.6 L534.2 71.9 L538.8 64.1 L543.4 58.3 L547.9 56.0 L552.5 53.4 L557.1 48.4 L561.6 48.0 L566.2 49.5 L570.8 52.0 L575.3 55.1 L579.9 58.5 L584.5 61.9 L589.0 63.8 L593.6 63.2 L598.2 60.9 L602.7 58.9 L607.3 59.1 L611.9 60.7 L616.4 62.2 L621.0 64.4 L625.6 60.5 L630.1 59.3 L634.7 59.3 L639.3 60.8 L643.8 63.0 L648.4 65.6 L653.0 64.4 L657.5 57.3 L662.1 45.8 L666.7 36.0 L671.2 32.6 L675.8 32.7 L680.4 34.8 L684.9 38.0 L689.5 41.8 L694.1 43.1 L698.6 36.1 L703.2 33.9 L707.8 34.7 L712.3 35.2 L716.9 34.1 L721.5 31.4 L726.0 31.3 L730.6 31.2 L735.2 33.3 L739.7 35.5 L744.3 37.7 L748.9 37.2 L753.4 35.9 L758.0 35.0 L762.6 34.1 L767.1 27.6 L771.7 17.6 L776.3 14.0 L780.8 14.9 L785.4 18.0 L790.0 21.8 L794.5 25.3 L799.1 29.6 L803.7 32.7 L808.2 36.6 L812.8 40.5 L817.4 44.8 L821.9 49.0 L826.5 53.2 L831.1 57.2 L835.6 61.9 L840.2 65.4 L844.7 68.8 L849.3 71.9 L853.9 74.8 L858.4 77.5 L863.0 80.0 L867.6 82.3 L872.1 84.5 L876.7 86.5 L881.3 88.4 L885.8 90.2 L890.4 92.2 L895.0 93.7 L899.5 95.1 L904.1 96.3 L908.7 96.7 L913.2 95.6 L917.8 95.3 L922.4 95.6 L926.9 96.3 L931.5 97.1 L936.1 97.0 L940.6 92.0 L945.2 83.8 L949.8 80.5 L954.3 79.4 L958.9 79.6 L963.5 80.6 L968.0 82.0 L972.6 83.7 L977.2 85.4 L981.7 87.1 L986.3 87.3 L990.9 79.3 L995.4 70.9 L1000.0 66.4 L1000 120 L0 120 Z"/>
+  <path class="line" d="M0.0 57.4 L4.6 58.7 L9.1 60.9 L13.7 63.5 L18.3 66.3 L22.8 69.1 L27.4 72.0 L32.0 74.7 L36.5 77.4 L41.1 79.9 L45.7 82.2 L50.2 84.4 L54.8 86.5 L59.4 88.8 L63.9 90.5 L68.5 92.1 L73.1 93.6 L77.6 95.0 L82.2 96.3 L86.8 97.5 L91.3 98.6 L95.9 99.6 L100.5 100.6 L105.0 101.5 L109.6 102.3 L114.2 103.3 L118.7 104.0 L123.3 103.5 L127.9 103.1 L132.4 103.1 L137.0 103.4 L141.6 103.4 L146.1 102.4 L150.7 102.2 L155.3 99.5 L159.8 94.1 L164.4 86.7 L168.9 81.1 L173.5 75.0 L178.1 72.3 L182.6 71.8 L187.2 72.5 L191.8 74.0 L196.3 75.8 L200.9 78.0 L205.5 70.8 L210.0 64.9 L214.6 62.6 L219.2 62.6 L223.7 64.3 L228.3 65.6 L232.9 65.8 L237.4 67.2 L242.0 69.1 L246.6 71.4 L251.1 71.8 L255.7 70.8 L260.3 69.6 L264.8 68.2 L269.4 67.2 L274.0 67.1 L278.5 68.6 L283.1 70.5 L287.7 72.7 L292.2 75.0 L296.8 77.4 L301.4 79.8 L305.9 80.3 L310.5 81.5 L315.1 83.0 L319.6 84.7 L324.2 86.4 L328.8 88.1 L333.3 82.8 L337.9 80.2 L342.5 79.4 L347.0 79.8 L351.6 79.4 L356.2 79.1 L360.7 79.7 L365.3 80.9 L369.9 82.4 L374.4 83.9 L379.0 85.5 L383.6 87.2 L388.1 88.9 L392.7 90.9 L397.3 92.4 L401.8 90.3 L406.4 88.5 L411.0 88.0 L415.5 88.4 L420.1 89.2 L424.7 90.3 L429.2 91.6 L433.8 92.9 L438.4 94.1 L442.9 95.4 L447.5 96.9 L452.1 98.1 L456.6 99.2 L461.2 100.2 L465.8 98.9 L470.3 97.9 L474.9 97.7 L479.5 97.9 L484.0 96.7 L488.6 96.3 L493.2 96.5 L497.7 97.1 L502.3 97.8 L506.8 98.3 L511.4 99.0 L516.0 99.8 L520.5 93.3 L525.1 88.1 L529.7 79.6 L534.2 71.9 L538.8 64.1 L543.4 58.3 L547.9 56.0 L552.5 53.4 L557.1 48.4 L561.6 48.0 L566.2 49.5 L570.8 52.0 L575.3 55.1 L579.9 58.5 L584.5 61.9 L589.0 63.8 L593.6 63.2 L598.2 60.9 L602.7 58.9 L607.3 59.1 L611.9 60.7 L616.4 62.2 L621.0 64.4 L625.6 60.5 L630.1 59.3 L634.7 59.3 L639.3 60.8 L643.8 63.0 L648.4 65.6 L653.0 64.4 L657.5 57.3 L662.1 45.8 L666.7 36.0 L671.2 32.6 L675.8 32.7 L680.4 34.8 L684.9 38.0 L689.5 41.8 L694.1 43.1 L698.6 36.1 L703.2 33.9 L707.8 34.7 L712.3 35.2 L716.9 34.1 L721.5 31.4 L726.0 31.3 L730.6 31.2 L735.2 33.3 L739.7 35.5 L744.3 37.7 L748.9 37.2 L753.4 35.9 L758.0 35.0 L762.6 34.1 L767.1 27.6 L771.7 17.6 L776.3 14.0 L780.8 14.9 L785.4 18.0 L790.0 21.8 L794.5 25.3 L799.1 29.6 L803.7 32.7 L808.2 36.6 L812.8 40.5 L817.4 44.8 L821.9 49.0 L826.5 53.2 L831.1 57.2 L835.6 61.9 L840.2 65.4 L844.7 68.8 L849.3 71.9 L853.9 74.8 L858.4 77.5 L863.0 80.0 L867.6 82.3 L872.1 84.5 L876.7 86.5 L881.3 88.4 L885.8 90.2 L890.4 92.2 L895.0 93.7 L899.5 95.1 L904.1 96.3 L908.7 96.7 L913.2 95.6 L917.8 95.3 L922.4 95.6 L926.9 96.3 L931.5 97.1 L936.1 97.0 L940.6 92.0 L945.2 83.8 L949.8 80.5 L954.3 79.4 L958.9 79.6 L963.5 80.6 L968.0 82.0 L972.6 83.7 L977.2 85.4 L981.7 87.1 L986.3 87.3 L990.9 79.3 L995.4 70.9 L1000.0 66.4"/>
+</svg>
+
+<main class="wrap">
+
+  <section class="section" id="storitve" aria-labelledby="h-storitve">
+    <h2 id="h-storitve">Storitve</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>Modeliranje podzemne vode</h3>
+        <p>Pomagam razumeti in napovedati gladine podzemne vode, napajanje vodonosnikov in pretoke izvirov. Delam v Pythonu z odprtokodnimi orodji, zato lahko analize kasneje ponovite in nadgradite sami.</p>
+        <ul>
+          <li>analiza časovnih vrst gladin podzemne vode in pretokov</li>
+          <li>ocena napajanja podzemne vode in evapotranspiracije</li>
+          <li>modeli s Pastas, PyEt in HYDRUS-1D ter metode strojnega učenja</li>
+          <li>pregledna koda, dokumentacija in predaja znanja vaši ekipi</li>
+        </ul>
+        <p class="for">Za komunalna podjetja, inženirske biroje, občine in raziskovalne skupine.</p>
+      </article>
+      <article class="card">
+        <h3>Izobraževanja o umetni inteligenci</h3>
+        <p>Pripravljam delavnice in tečaje, po katerih udeleženci orodja umetne inteligence samostojno uporabljajo pri svojem delu. Vsebino in zahtevnost prilagodim skupini.</p>
+        <ul>
+          <li>osnove umetne inteligence in velikih jezikovnih modelov</li>
+          <li>premišljena in varna raba orodij UI pri delu in študiju</li>
+          <li>Python in Google Colab za začetnike</li>
+          <li>strojno učenje za raziskovalce in analitike</li>
+        </ul>
+        <p class="for">Za podjetja, šole, fakultete in raziskovalce. V živo ali na spletu, od dveurne delavnice do večdnevnega tečaja.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="o-meni" aria-labelledby="h-o-meni">
+    <h2 id="h-o-meni">O meni</h2>
+    <div class="prose">
+      <p>Sem docent na Oddelku za umetno inteligenco in digitalne tehnologije Alma Mater Europaea v Mariboru in raziskovalec na Univerzi v Gradcu. Doktoriral sem leta 2023 na Univerzi v Gradcu, raziskujem pa evapotranspiracijo, napajanje podzemne vode, pretoke izvirov in uporabo strojnega učenja v hidrologiji. Razvijam odprtokodna paketa PyEt in Phydrus za Python, PyEt pa je predstavljen v reviji <a href="https://doi.org/10.5194/gmd-17-7083-2024">Geoscientific Model Development</a>. Na fakulteti poučujem predmete s področja podatkov in umetne inteligence, delavnice pa vodim tudi za dijake.</p>
+    </div>
+  </section>
+
+  <section class="section" id="novice" aria-labelledby="h-novice">
+    <h2 id="h-novice">Novice</h2>
+    <ul class="news">
+      <li>
+        <time datetime="2026-10-15">15. 10. 2026</time>
+        <h3>Tečaj PyEt za Australian Water School</h3>
+        <p>Za Australian Water School sem skupaj s soavtorjem paketa vodil dvourni spletni tečaj o ocenjevanju potencialne evapotranspiracije iz meteoroloških podatkov s paketom PyEt.</p>
+      </li>
+      <li>
+        <time datetime="2026-10">oktober 2026</time>
+        <h3>Delavnice umetne inteligence na Gimnaziji Ormož</h3>
+        <p>Z dijaki Gimnazije Ormož smo spoznavali osnove umetne inteligence in naredili prve korake v Pythonu z orodjem Google Colab.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section contact" id="kontakt" aria-labelledby="h-kontakt">
+    <h2 id="h-kontakt">Kontakt</h2>
+    <div class="prose">
+      <p>Za povpraševanje, ponudbo ali kratek posvet mi pišite po e-pošti.</p>
+      <dl>
+        <dt>E-pošta</dt>
+        <dd><a href="mailto:[vpiši e-pošto]">[vpiši e-pošto]</a></dd>
+        <dt>LinkedIn</dt>
+        <dd><a href="[vpiši LinkedIn URL]">Profil na LinkedInu</a></dd>
+      </dl>
+      <a class="btn" href="mailto:[vpiši e-pošto]?subject=Povpra%C5%A1evanje">Pišite mi</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <div class="foot">
+    <p>© 2026 [vpiši naziv s.p.], [vpiši sedež]</p>
+    <p>Matična številka: [vpiši], davčna številka: [vpiši]</p>
+  </div>
+</footer>
+
+</body>
+</html>
